@@ -41,7 +41,7 @@ public class ChangePwdCode {
 				break;
 			}
 
-		case "noDupGreaterThan4":
+		case "noDuplicatesGreaterThan4":
 
 			char[] charArr = newPwd.toCharArray();
 			HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
@@ -72,6 +72,17 @@ public class ChangePwdCode {
 				System.out.println("Special Character check is less than 4, hence valid");
 			} else {
 				System.out.println("Special Character are more than 4");
+				break;
+			}
+
+		case "halfShouldntBeANumber":
+
+			int newPwdLen = newPwd.length();
+			String pwdNumerics = newPwd.replaceAll("[^0-9]", "");
+			if (pwdNumerics.length() < (newPwdLen / 2)) {
+				System.out.println("Pwd contains valid number of Numerics");
+			} else {
+				System.out.println("Pwd contains more than permitted number of numerics");
 				break;
 			}
 
