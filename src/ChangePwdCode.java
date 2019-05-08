@@ -21,7 +21,9 @@ public class ChangePwdCode {
 		switch (pwdReq) {
 
 		case "newPwdMatchesReEnterPwd":
+
 			System.out.println("Verifying if re-entered pwd is matching with new pwd");
+
 			if (newPwd.equals(newPwdVerf)) {
 				bn = true;
 				System.out.println("Password Match Successful");
@@ -31,7 +33,9 @@ public class ChangePwdCode {
 				break;
 			}
 		case "newPwdLength":
+
 			System.out.println("new Pwd should atleast be 18 characters in length");
+
 			if (newPwd.length() >= 18) {
 				bn = true;
 				System.out.println("Length check is Successful");
@@ -53,7 +57,6 @@ public class ChangePwdCode {
 					hm.put(c, 1);
 				}
 			}
-
 			Set<Character> st = hm.keySet();
 			for (char ch : st) {
 				if (hm.get(ch) > 4) {
@@ -61,7 +64,6 @@ public class ChangePwdCode {
 					break;
 				}
 			}
-
 			System.out.println("Duplicate Characters validation is successful");
 
 		case "noMoreThan4SpecChar":
@@ -89,7 +91,6 @@ public class ChangePwdCode {
 		case "alphaNumericCheck":
 
 			final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{18,}$";
-
 			final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
 
 			if (PASSWORD_PATTERN.matcher(newPwd).matches()) {
@@ -101,9 +102,7 @@ public class ChangePwdCode {
 				break;
 			}
 		}
-
 		sc.close();
-
 	}
 
 	public static void main(String args[]) {
