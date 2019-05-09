@@ -8,8 +8,8 @@ public class ChangePwdCode {
 	String pwdReq = "newPwdMatchesReEnterPwd";
 	Boolean bn;
 
-	public void gatherPwdInfo() {
-
+	public void getInput() {
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter old Pwd: ");
 		String oldPwd = sc.nextLine();
@@ -18,6 +18,10 @@ public class ChangePwdCode {
 		System.out.println("Re-enter new Pwd: ");
 		String newPwdVerf = sc.nextLine();
 
+	}
+
+	public void gatherPwdInfo(String oldPwd, String newPwd, String newPwdVerf) {
+
 		switch (pwdReq) {
 
 		case "newPwdMatchesReEnterPwd":
@@ -25,10 +29,8 @@ public class ChangePwdCode {
 			System.out.println("Verifying if re-entered pwd is matching with new pwd");
 
 			if (newPwd.equals(newPwdVerf)) {
-				bn = true;
 				System.out.println("Password Match Successful");
 			} else {
-				bn = false;
 				System.out.println("Re-Entered password is not matching with new pwd");
 				break;
 			}
@@ -37,10 +39,8 @@ public class ChangePwdCode {
 			System.out.println("new Pwd should atleast be 18 characters in length");
 
 			if (newPwd.length() >= 18) {
-				bn = true;
 				System.out.println("Length check is Successful");
 			} else {
-				bn = false;
 				System.out.println("Please check the length, it should be 18");
 				break;
 			}
@@ -68,7 +68,7 @@ public class ChangePwdCode {
 
 		case "noMoreThan4SpecChar":
 
-			String specChar = newPwd.replaceAll("^A-Za-z0-9", "");
+			String specChar = newPwd.replaceAll("[^A-Za-z0-9]", "");
 			int diffChar = ((newPwd.length()) - (specChar.length()));
 			if (diffChar <= 4) {
 				System.out.println("Special Character check is less than 4, hence valid");
@@ -102,14 +102,12 @@ public class ChangePwdCode {
 				break;
 			}
 		}
-		sc.close();
 	}
 
 	public static void main(String args[]) {
-
 		ChangePwdCode cp = new ChangePwdCode();
-		cp.gatherPwdInfo();
-
+		cp.getInput();
+		cp.gatherPwdInfo("oldPwd", "nePwd", "newPwd");
 	}
 
 }
