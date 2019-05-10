@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class UnitTestableCode {
+public class ChangePasswordCode {
 
 	public boolean passwordRentryCheck(String newPwd, String newPwdVerf) {
 
@@ -108,7 +108,7 @@ public class UnitTestableCode {
 	}
 
 	public static void main(String args[]) {
-		UnitTestableCode ub = new UnitTestableCode();
+		ChangePasswordCode ub = new ChangePasswordCode();
 		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "Pjhoiuytrewq#33mnbv", "Pjhoiuytrewq#33mnbv");
 
 	}

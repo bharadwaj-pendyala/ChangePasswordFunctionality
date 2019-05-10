@@ -2,9 +2,9 @@ package passwordValidator;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestChangePwdCode {
+public class ChangePasswordCodeTest {
 
-	UnitTestableCode cd = new UnitTestableCode();
+	ChangePasswordCode cd = new ChangePasswordCode();
 
 	/*
 	 * Valid Password Test Data
