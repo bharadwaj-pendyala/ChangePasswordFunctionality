@@ -1,10 +1,21 @@
 package passwordValidator;
+
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 public class ChangePasswordCode {
+
+	public boolean oldPwdEnteredMatchingWithSysPwd(String oldPwd, String oldPwdinSystem) {
+		System.out.println("Verifying if old password in system is matching with entered old password while changing");
+		if (oldPwd.equals(oldPwdinSystem)) {
+			System.out.println("Old Pwd entered is matching with old password in system");
+			return true;
+		} else {
+			System.out.println("Old Pwd enetered is not matching with the one in system!");
+			return false;
+		}
+	}
 
 	public boolean passwordRentryCheck(String newPwd, String newPwdVerf) {
 
@@ -95,10 +106,23 @@ public class ChangePasswordCode {
 		}
 	}
 
-	public boolean pwdReplacement(String oldPwd, String newPwd, String newPwdVerf) {
+	public boolean oldPwdEqualityWithNewPwd(String oldPwd, String newPwd) {
+		System.out.println("Verifying if new pwd entered is not same as old one");
+		if (oldPwd.equals(newPwd)) {
+			System.out.println("oldPwd equality is not matching with new Pwd");
+			return true;
+		} else {
+			System.out.println("oldPwd equality is matching with new Pwd, Kindly re-enter valid new pwd");
+			return false;
+		}
+	}
 
-		if (passwordRentryCheck(newPwd, newPwdVerf) && passwordLengthCheck(newPwd) && duplicateCharLessThan4(newPwd)
-				&& noMoreThan4SpecChar(newPwd) && halfShouldntBeANumber(newPwd) && alphaNumericCheck(newPwd)) {
+	public boolean pwdReplacement(String oldPwdinSystem, String oldPwd, String newPwd, String newPwdVerf) {
+
+		if (oldPwdEnteredMatchingWithSysPwd(oldPwd, oldPwdinSystem) && passwordRentryCheck(newPwd, newPwdVerf)
+				&& passwordLengthCheck(newPwd) && duplicateCharLessThan4(newPwd) && noMoreThan4SpecChar(newPwd)
+				&& halfShouldntBeANumber(newPwd) && alphaNumericCheck(newPwd)
+				&& oldPwdEqualityWithNewPwd(oldPwd, newPwd)) {
 			System.out.println("Replacing old pwd with new pwd " + newPwd);
 			return true;
 		} else {
@@ -109,7 +133,7 @@ public class ChangePasswordCode {
 
 	public static void main(String args[]) {
 		ChangePasswordCode ub = new ChangePasswordCode();
-		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "Pjhoiuytrewq#33mnbv", "Pjhoiuytrewq#33mnbv");
+		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "A123mnbvcxzlkjhgfds^", "Pjhoiuytrewq#33mnbv", "Pjhoiuytrewq#33mnbv");
 
 	}
 
