@@ -33,7 +33,7 @@ Import the cloned repo into Eclipse.
 
 ## Authors
 
-* **Bharadwaj pendyala** - (https://github.com/bharadwajpendyala)
+* **Bharadwaj pendyala** - (https://github.com/bharadwaj-pendyala)
 
 ## License
 
