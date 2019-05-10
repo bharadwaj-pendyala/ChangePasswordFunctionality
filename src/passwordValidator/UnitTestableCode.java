@@ -1,3 +1,4 @@
+package passwordValidator;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
@@ -43,7 +44,7 @@ public class UnitTestableCode {
 		Set<Character> st = hm.keySet();
 		for (char ch : st) {
 			if (hm.get(ch) > 4) {
-				System.out.println(ch + " " + hm.get(ch));
+				System.out.println(ch + " has been used for:" + " " + hm.get(ch));
 				return false;
 			}
 		}
@@ -54,9 +55,12 @@ public class UnitTestableCode {
 	public boolean noMoreThan4SpecChar(String newPwd) {
 		String specChar = newPwd.replaceAll("[^A-Za-z0-9]", "");
 		int diffChar = ((newPwd.length()) - (specChar.length()));
-		if (diffChar <= 4) {
+		if (diffChar != 0 && diffChar <= 4) {
 			System.out.println("Special Character check is less than 4, hence valid");
 			return true;
+		} else if (newPwd.length() == specChar.length()) {
+			System.out.println("There are no special characters in the entered password");
+			return false;
 		} else {
 			System.out.println("Special Character are more than 4");
 			return false;
@@ -67,9 +71,12 @@ public class UnitTestableCode {
 	public boolean halfShouldntBeANumber(String newPwd) {
 		int newPwdLen = newPwd.length();
 		String pwdNumerics = newPwd.replaceAll("[^0-9]", "");
-		if (pwdNumerics.length() < (newPwdLen / 2)) {
+		if (pwdNumerics.length() > 0 && pwdNumerics.length() < (newPwdLen / 2)) {
 			System.out.println("Pwd contains valid number of Numerics");
 			return true;
+		} else if (pwdNumerics.length() == 0) {
+			System.out.println("Pwd contains no Numerics at all");
+			return false;
 		} else {
 			System.out.println("Pwd contains more than permitted number of numerics");
 			return false;
@@ -92,7 +99,7 @@ public class UnitTestableCode {
 
 		if (passwordRentryCheck(newPwd, newPwdVerf) && passwordLengthCheck(newPwd) && duplicateCharLessThan4(newPwd)
 				&& noMoreThan4SpecChar(newPwd) && halfShouldntBeANumber(newPwd) && alphaNumericCheck(newPwd)) {
-			System.out.println("Replacing old pwd with new pwd "+ newPwd);
+			System.out.println("Replacing old pwd with new pwd " + newPwd);
 			return true;
 		} else {
 			System.out.println("Recheck the entered new password as its not meeting the password requirements");
@@ -102,8 +109,8 @@ public class UnitTestableCode {
 
 	public static void main(String args[]) {
 		UnitTestableCode ub = new UnitTestableCode();
-		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "Mweenbvcxzlkjhgf##22", "Mweenbvcxzlkjhgf##22");
-		
+		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "Pjhoiuytrewq#33mnbv", "Pjhoiuytrewq#33mnbv");
+
 	}
 
 }
