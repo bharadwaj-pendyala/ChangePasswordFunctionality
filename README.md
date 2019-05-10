@@ -12,6 +12,7 @@ In order to get started with validating the change password functionality, below
 
 * Lates version of GIT Client should be installed. You can download it form https://git-scm.com/, in case of unavailability.
 
+* JUnit4/5 Unit Testing Library.
 
 ### Installing
 
@@ -30,6 +31,9 @@ Import the cloned repo into Eclipse.
 
 * File ```ChangePasswordCodeTest``` contains test cases to validate the change password functionality developed as per requirements.
 
+* File ```SnapshotofResultReport``` contains 8 valid scnearios bound to pass and 8 invalid scenarios which are bound to fail, attaching snapshot of report. Note: Below failures are generate due to passing inavlid test data which is expected.
+
+ ![ReportImage](https://i.ibb.co/b14MM4K/2019-05-10-at-9-23-PM.png)
 
 ## Authors
 
