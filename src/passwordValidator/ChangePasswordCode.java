@@ -28,18 +28,6 @@ public class ChangePasswordCode {
 		}
 	}
 
-	public boolean passwordLengthCheck(String newPwd) {
-
-		if (newPwd.length() >= 18) {
-			System.out.println("Length of pwd is acceptable");
-			return true;
-		} else {
-			System.out.println("Length of pwd isn't acceptable");
-			return false;
-		}
-
-	}
-
 	public boolean duplicateCharLessThan4(String newPwd) {
 
 		char[] charArr = newPwd.toCharArray();
@@ -79,35 +67,37 @@ public class ChangePasswordCode {
 
 	}
 
-	public boolean halfShouldntBeANumber(String newPwd) {
+	public boolean halfPwdShouldntBeANumber(String newPwd) {
 		int newPwdLen = newPwd.length();
 		String pwdNumerics = newPwd.replaceAll("[^0-9]", "");
 		if (pwdNumerics.length() > 0 && pwdNumerics.length() < (newPwdLen / 2)) {
-			System.out.println("Pwd contains valid number of Numerics");
+			System.out.println("Pwd contains valid number of numerics less than half");
 			return true;
 		} else if (pwdNumerics.length() == 0) {
-			System.out.println("Pwd contains no Numerics at all");
+			System.out.println("Pwd contains no numerics at all");
 			return false;
 		} else {
-			System.out.println("Pwd contains more than permitted number of numerics");
+			System.out.println("Pwd contains more than permitted number of numerics more than half");
 			return false;
 		}
 	}
 
-	public boolean alphaNumericCheck(String newPwd) {
+	public boolean alphaNumericAndPwdLenghCheck(String newPwd) {
+
 		final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{18,}$";
 		final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
 
 		if (PASSWORD_PATTERN.matcher(newPwd).matches()) {
+			System.out.println("Pwd is following alpha numeric, special character and length requiements");
 			return true;
 		} else {
-			System.out.println("Pwd doesn't meet alpha numeric and special character requiements");
+			System.out.println("Pwd doesn't meet alpha numeric, special character and length requiements");
 			return false;
 		}
 	}
 
 	public boolean oldPwdEqualityWithNewPwd(String oldPwd, String newPwd) {
-		System.out.println("Verifying if new pwd entered is not same as old one");
+
 		if (oldPwd.equals(newPwd)) {
 			System.out.println("oldPwd equality is matching with new Pwd, Kindly re-enter valid new pwd");
 			return false;
@@ -120,12 +110,13 @@ public class ChangePasswordCode {
 	public boolean pwdReplacement(String oldPwdinSystem, String oldPwd, String newPwd, String newPwdVerf) {
 
 		if (oldPwdEnteredMatchingWithSysPwd(oldPwd, oldPwdinSystem) && passwordRentryCheck(newPwd, newPwdVerf)
-				&& passwordLengthCheck(newPwd) && duplicateCharLessThan4(newPwd) && noMoreThan4SpecChar(newPwd)
-				&& halfShouldntBeANumber(newPwd) && alphaNumericCheck(newPwd)
-				&& oldPwdEqualityWithNewPwd(oldPwd, newPwd)) {
+				&& duplicateCharLessThan4(newPwd) && noMoreThan4SpecChar(newPwd) && halfPwdShouldntBeANumber(newPwd)
+				&& alphaNumericAndPwdLenghCheck(newPwd) && oldPwdEqualityWithNewPwd(oldPwd, newPwd)) {
+			System.out.println("----------------------------------------------------------");
 			System.out.println("Replacing old pwd with new pwd " + newPwd);
 			return true;
 		} else {
+			System.out.println("----------------------------------------------------------");
 			System.out.println("Recheck the entered new password as its not meeting the password requirements");
 			return false;
 		}
@@ -133,7 +124,7 @@ public class ChangePasswordCode {
 
 	public static void main(String args[]) {
 		ChangePasswordCode ub = new ChangePasswordCode();
-		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "A123mnbvcxzlkjhgfds^", "Pjhoiuytrewq#33mnbv", "Pjhoiuytrewq#33mnbv");
+		ub.pwdReplacement("A123mnbvcxzlkjhgfds^", "A123mnbvcxzlkjhgfds^", "Pjhoaciuytwq#33mnbv", "Pjhoaciuytwq#33mnbv");
 
 	}
 
