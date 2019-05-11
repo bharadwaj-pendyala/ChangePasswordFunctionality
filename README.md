@@ -33,7 +33,7 @@ Import the cloned repo into Eclipse.
 
 * File ```SnapshotofResultReport``` contains 8 valid scnearios bound to pass and 8 invalid scenarios which are bound to fail, attaching snapshot of report. Note: Below failures are generate due to passing inavlid test data which is expected.
 
- ![ReportImage](https://i.ibb.co/b14MM4K/2019-05-10-at-9-23-PM.png)
+ ![ReportImage](https://i.imgur.com/htTHVxO.png)
 
 ## Authors
 
