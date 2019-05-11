@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class ChangePasswordCode {
 
 	public boolean oldPwdEnteredMatchingWithSysPwd(String oldPwd, String oldPwdinSystem) {
-		System.out.println("Verifying if old password in system is matching with entered old password while changing");
+
 		if (oldPwd.equals(oldPwdinSystem)) {
 			System.out.println("Old Pwd entered is matching with old password in system");
 			return true;
@@ -20,10 +20,10 @@ public class ChangePasswordCode {
 	public boolean passwordRentryCheck(String newPwd, String newPwdVerf) {
 
 		if (newPwd.equals(newPwdVerf)) {
-			System.out.println("There is a match");
+			System.out.println("New pwd and re-entered pwd are matching");
 			return true;
 		} else {
-			System.out.println("There isnt a match");
+			System.out.println("New pwd and re-entered pwd are not matching");
 			return false;
 		}
 	}
@@ -109,11 +109,11 @@ public class ChangePasswordCode {
 	public boolean oldPwdEqualityWithNewPwd(String oldPwd, String newPwd) {
 		System.out.println("Verifying if new pwd entered is not same as old one");
 		if (oldPwd.equals(newPwd)) {
-			System.out.println("oldPwd equality is not matching with new Pwd");
-			return true;
-		} else {
 			System.out.println("oldPwd equality is matching with new Pwd, Kindly re-enter valid new pwd");
 			return false;
+		} else {
+			System.out.println("oldPwd equality is not matching with new Pwd");
+			return true;
 		}
 	}
 
